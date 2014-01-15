@@ -1,6 +1,6 @@
 #' ee_photos
 #'
-#' Search the photos methods in the Holos API. 
+#' Search the photos methods in the ecoengine API. 
 #' @template pages
 #' @param  state_province Need to describe these parameters
 #' @param  county California counties. Package include a full list of counties. To load dataset \code{data(california_counties)}
@@ -15,6 +15,7 @@
 #' @param  related  Need to describe these parameters
 #' @param  other_catalog_numbers Need to describe these parameters
 #' @param  quiet Default is \code{FALSE}. Set to \code{TRUE} to suppress messages.
+#' @param  georeferenced  Default is \code{FALSE}. Set to \code{TRUE} to filter by photos that have geo data.
 #' @template foptions
 #' @template progress
 #' @export
@@ -64,10 +65,13 @@ ee_photos <- function(page = NULL,
 						 related  = NULL,
 						 page_size = 25,
 						 quiet = FALSE,
+						 georeferenced = FALSE,
 						 progress = TRUE,
 						 other_catalog_numbers = NULL, 
 						 foptions = list()) {
 	photos_url <- "http://ecoengine.berkeley.edu/api/photos/?format=json"
+	if(georeferenced) georeferenced = "True"
+	
 	args <- as.list(compact(c(page_size = page_size,					 
 							state_province = state_province, 
 						 	county = county, 
@@ -81,6 +85,7 @@ ee_photos <- function(page = NULL,
 						 	max_date = max_date, 
 						 	related_type = related_type, 
 						 	related  = related , 
+						 	georeferenced = georeferenced,
 						 	other_catalog_numbers = other_catalog_numbers)))
 	main_args <- args
 	if(is.null(page)) { page <- 1 }
@@ -110,6 +115,8 @@ ee_photos <- function(page = NULL,
 	photos_data <- do.call(rbind.fill, results)
 	photos_data$begin_date <- suppressWarnings(ymd_hms(photos_data$begin_date))
 	photos_data$end_date <- suppressWarnings(ymd_hms(photos_data$end_date))
+	names(photos_data)[which(names(photos_data)=="geojson.coordinates1")] <- "longitude"
+    names(photos_data)[which(names(photos_data)=="geojson.coordinates2")] <- "latitude"
     photos_results <- list(results = photos$count, call = main_args, type = "photos", data = photos_data)
     class(photos_results) <- "ecoengine"
     
