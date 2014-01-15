@@ -65,9 +65,9 @@ stop_for_status(data_sources)
 obs_data <- content(data_sources)
 
 required_pages <- ee_paginator(page, obs_data$count)
+all_the_pages <- ceiling(obs_data$count/page_size)
 
-
-if(!quiet)  message(sprintf("Search contains %s observations (downloading %s of %s pages)", obs_data$count, length(required_pages), max(required_pages)))
+if(!quiet)  message(sprintf("Search contains %s observations (downloading %s of %s pages)", obs_data$count, length(required_pages), all_the_pages))
 if(progress) pb <- txtProgressBar(min = 0, max = length(required_pages), style = 3)
 
 
@@ -101,8 +101,8 @@ if(progress) pb <- txtProgressBar(min = 0, max = length(required_pages), style =
     names(obs_data_all)[which(names(obs_data_all)=="geojson.coordinates2")] <- "latitude"
     obs_data_all$latitude <- suppressWarnings(as.numeric(as.character(obs_data_all$latitude)))
     obs_data_all$longitude <- suppressWarnings(as.numeric(as.character(obs_data_all$longitude)))
-    obs_data_all$begin_date <- suppressWarnings(ymd_hms(obs_data_all$begin_date))
-    obs_data_all$end_date <- suppressWarnings(ymd_hms(obs_data_all$end_date))
+    obs_data_all$begin_date <- suppressWarnings(ymd_hms(as.character(obs_data_all$begin_date)))
+    obs_data_all$end_date <- suppressWarnings(ymd_hms(as.character(obs_data_all$end_date)))
 
 observation_results <- list(results = obs_data$count, call = main_args, type = "observations", data = obs_data_all)
 
