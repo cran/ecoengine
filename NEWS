@@ -1,3 +1,7 @@
+ecoengine 1.1.2
+* Important bugfix. Lat/Long type conversion issue results in a string of integers. Now returns location data correctly.
+* Added geojson support
+
 ecoengine 1.1
 =======================
 * Minor bug fixes

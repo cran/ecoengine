@@ -20,14 +20,14 @@ es_results <- content(result)
 fields <- es_results$fields
 # This removes list items with nothing nested. 
 ee_filter <- function(i) {
-	length(i) > 0
+        length(i) > 0
 }
 fields_compacted <- Filter(ee_filter, fields)
 faceted_search_results <- lapply(fields_compacted, function(y) { 
-	temp_fields <- do.call(rbind.data.frame, lapply(y, LinearizeNestedList))
-	# temp_fields <- as.data.frame(t(unlist(y))) 
-	names(temp_fields) <- c("field", "results", "search_url")
-	temp_fields
+        temp_fields <- do.call(rbind.data.frame, lapply(y, LinearizeNestedList))
+        # temp_fields <- as.data.frame(t(unlist(y))) 
+        names(temp_fields) <- c("field", "results", "search_url")
+        temp_fields
 })
 data.frame(rbindlist(faceted_search_results))
 }
@@ -55,7 +55,7 @@ data.frame(rbindlist(faceted_search_results))
 #'}
 ee_search_obs <- function(query = NULL, page = NULL, page_size = 25, quiet = FALSE, progress = TRUE, foptions = list()) {
 	obs_search_url <- "http://ecoengine.berkeley.edu/api/observations/?format=json"	
-	args <- compact(as.list(c(q = query, page_size = 25)))
+	args <- ee_compact(as.list(c(q = query, page_size = 25)))
     main_args <- args
     main_args$page <- as.character(page)
 	obs_search <- GET(obs_search_url, query = args, foptions)

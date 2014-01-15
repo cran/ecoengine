@@ -14,17 +14,17 @@
 #' all_lists  <- ee_checklists()
 #' mammals_list  <- ee_checklists(subject = "Mammals")
 #' spiders  <- ee_checklists(subject = "Spiders")
-
 ee_checklists <- function(subject = NULL, foptions = list()) {
 
 	base_url <- "http://ecoengine.berkeley.edu/api/checklists/?format=json"
 	full_checklist <- GET(base_url, foptions)
 	stop_for_status(full_checklist)
 	checklist_data <- content(full_checklist)
-	args <- as.list(compact(c(page_size = checklist_data$count)))
+	args <- as.list(ee_compact(c(page_size = checklist_data$count)))
 	all_data <- GET(base_url, query = args, foptions)
 	stop_for_status(all_data)
 	all_checklists <- content(all_data)
+	# all_checklists_df <- rbind_all(all_checklists$results)
 	all_checklists_df <- ldply(all_checklists$results, function(x) data.frame(x))
 	if(!is.null(subject)) {
 	subject <- eco_capwords(subject)
@@ -65,6 +65,7 @@ full_results <- ldply(first_results$url, function(x) {
 })
 full_results
 }
+
 
 
 # Function to capitalize words

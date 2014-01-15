@@ -3,13 +3,12 @@
 #' @method print ecoengine
 #' @S3method print ecoengine
 #' @param x An object of class \code{ecoengine}
-#' @importFrom DBI print.list.pairs
-#' @importFrom plyr compact
+#'   
 #' @param ... additional arguments
 print.ecoengine <- function(x, ...) {
 cat(sprintf("[Total results]: %s \n", x$results))
 cat("[Args]: \n")
-suppressWarnings(print.list.pairs(x$call))
+suppressWarnings(pretty_lists(x$call))
 cat(sprintf("[Type]: %s \n", x$type))
 cat(sprintf("[Number of results]: %s \n", nrow(x$data)))
 }
@@ -63,6 +62,8 @@ ee_paginator <- function(page, total_obs) {
     }
 
 
+#' @noRd
+ee_compact <- function(l) Filter(Negate(is.null), l)
 
 #' @noRd
 # Internal function to convert list to data.frame when it contains NULL
@@ -226,4 +227,16 @@ LinearizeNestedList <- function(NList, LinearizeDataFrames=FALSE,
         B <- length(NList)
     }
     return(NList)
+}
+
+
+#' @noRd
+pretty_lists <- function(x)
+{
+   for(key in names(x)){
+      value <- format(x[[key]])
+      if(value == "") next
+      cat(key, "=", value, "\n")
+   }
+   invisible(x)
 }
