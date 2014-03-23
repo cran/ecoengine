@@ -24,7 +24,7 @@
 #' @param  source  data source. See \code{\link{ee_sources}}
 #' @template dates
 #' @param  georeferenced Default is \code{FALSE}. Set to \code{TRUE} to return only georeferenced records.
-#' @param  bbox Set a bounding box for your search. Use format \code{bbox=-124,32,-114,42}. Order is min Longitude , min Latitude , max Longitude , max Latitude 
+#' @param  bbox Set a bounding box for your search. Use format \code{bbox=-124,32,-114,42}. Order is min Longitude , min Latitude , max Longitude , max Latitude. Use \code{http://boundingbox.klokantech.com/} this website to quickly grab a bounding box (set format to csv on lower right) 
 #' @param  quiet Default is \code{FALSE}. Set to \code{TRUE} to supress messages.
 #' @template foptions
 #' @template progress
@@ -95,7 +95,6 @@ if(progress) pb <- txtProgressBar(min = 0, max = length(required_pages), style =
                             })
         results[[i]] <- obs_df_cleaned
         if(progress) setTxtProgressBar(pb, i)
-        if(i %% 25 == 0) Sys.sleep(2) 
     }
     
     obs_data_all <- do.call(rbind, results)
