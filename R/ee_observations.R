@@ -66,7 +66,7 @@ data_sources <- GET(obs_url, query = args, foptions)
 stop_for_status(data_sources)
 obs_data <- content(data_sources)
 
-required_pages <- ee_paginator(page, obs_data$count)
+required_pages <- ee_paginator(page, obs_data$count, page_size = page_size)
 all_the_pages <- ceiling(obs_data$count/page_size)
 
 if(!quiet)  message(sprintf("Search contains %s observations (downloading %s of %s pages)", obs_data$count, length(required_pages), all_the_pages))
