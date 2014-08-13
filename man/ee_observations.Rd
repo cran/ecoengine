@@ -10,8 +10,8 @@ ee_observations(page = NULL, page_size = 1000, country = "United States",
   order__exact = NULL, clss__exact = NULL, family__exact = NULL,
   genus__exact = NULL, scientific_name__exact = NULL, remote_id = NULL,
   collection_code = NULL, source = NULL, min_date = NULL,
-  max_date = NULL, georeferenced = FALSE, bbox = NULL, quiet = FALSE,
-  progress = TRUE, foptions = list())
+  max_date = NULL, georeferenced = FALSE, bbox = NULL, exclude = NULL,
+  extra = NULL, quiet = FALSE, progress = TRUE, foptions = list())
 }
 \arguments{
 \item{page}{Page number}
@@ -66,6 +66,20 @@ ee_observations(page = NULL, page_size = 1000, country = "United States",
 
 \item{bbox}{Set a bounding box for your search. Use format \code{bbox=-124,32,-114,42}. Order is min Longitude , min Latitude , max Longitude , max Latitude. Use \code{http://boundingbox.klokantech.com/} this website to quickly grab a bounding box (set format to csv on lower right)}
 
+\item{exclude}{Default is \code{NULL}. Pass a list of fields to exclude.}
+
+\item{extra}{Default is \code{NULL}. Pass a list of extra fields to be returned. Additional fields include:
+# "id", "record", "source", "remote_resource", "begin_date", "end_date",
+# "collection_code", "institution_code", "state_province", "county",
+# "last_modified", "original_id", "geometry", "coordinate_uncertainty_in_meters"
+# "md5", "scientific_name", "observation_type", "date_precision", "locality"
+# "earliest_period_or_lowest_system", "latest_period_or_highest_system", "kingdom"
+# "phylum", "clss", "order", "family", "genus", "specific_epithet",
+# "infraspecific_epithet", "minimum_depth_in_meters", "maximum_depth_in_meters",
+# "maximum_elevation_in_meters", "minimum_elevation_in_meters", "catalog_number"
+# preparations", "sex", "life_stage", "water_body", "country", "individual_count",
+"associated_resources"}
+
 \item{quiet}{Default is \code{FALSE}. Set to \code{TRUE} to supress messages.}
 
 \item{foptions}{A list of additional arguments for \code{httr}. There is no reason to use this argument except for debugging purposes.}
@@ -95,6 +109,11 @@ pinus <- ee_observations(scientific_name = "Pinus", page_size = 100)
 # chordata <- ee_observations(phylum = "chordata")
 # Class is clss since the former is a reserved keyword in SQL.
 # aves <- ee_observations(clss = "aves")
+# You can also exclude fields using the exclude field
+#  aves <- ee_observations(clss = "aves", exclude = "remote_resource")
+#  aves <- ee_observations(clss = "aves", exclude = "source,remote_resource")
+#  or request additional fields using extra
+#  aves <- ee_observations(clss = "aves", extra = "kingdom,genus")
 # aves <- ee_observations(clss = "aves", bbox = '-124,32,-114,42')
 # aves <- ee_observations(clss = "aves", county = "Alameda county")
 }

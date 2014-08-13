@@ -1,11 +1,10 @@
 base
 codetools
-coyote
 devtools
 ecoengine
 ggplot2
+httr
 knitr
 pander
 plyr
-reshape2
-rjson
+rmarkdown
