@@ -35,7 +35,7 @@
 #' # "phylum", "clss", "order", "family", "genus", "specific_epithet", 
 #' # "infraspecific_epithet", "minimum_depth_in_meters", "maximum_depth_in_meters", 
 #' # "maximum_elevation_in_meters", "minimum_elevation_in_meters", "catalog_number"
-#' # preparations", "sex", "life_stage", "water_body", "country", "individual_count", 
+#' # "preparations", "sex", "life_stage", "water_body", "country", "individual_count", 
 #' "associated_resources"
 #' @param  quiet Default is \code{FALSE}. Set to \code{TRUE} to supress messages.
 #' @template foptions
@@ -49,7 +49,7 @@
 #' @examples 
 #' # vulpes <- ee_observations(genus = "vulpes")
 #' \dontrun{
-#' pinus <- ee_observations(scientific_name = "Pinus", page_size = 100)
+#' # pinus <- ee_observations(scientific_name = "Pinus", page_size = 100)
 #' # lynx_data <- ee_observations(genus = "Lynx")
 #' # Georeferenced data only
 #' # lynx_data <- ee_observations(genus = "Lynx", georeferenced = TRUE)
@@ -77,6 +77,7 @@ ee_observations <- function(page = NULL, page_size = 1000, country = "United Sta
  obs_url <- paste0(ee_base_url(), "observations/?format=geojson")
 
 if(georeferenced) georeferenced = "True"
+extra <- ifelse(is.null(extra), "last_modified", paste0(extra,",last_modified"))
 
 args <- as.list(ee_compact(c(country = country, kingdom = kingdom, phylum = phylum,order = order, clss = clss,family = family, genus  = genus, scientific_name = scientific_name, kingdom__exact = kingdom__exact, phylum__exact = phylum__exact, county = county, order__exact = order__exact, clss__exact = clss__exact ,family__exact = family__exact , genus__exact  = genus__exact, scientific_name__exact = scientific_name__exact, remote_id = remote_id, collection_code = collection_code, source = source, min_date = min_date, max_date = max_date, bbox = bbox, exclude = exclude, extra = extra, georeferenced = georeferenced, page_size = page_size)))
 if(is.null(page)) { page <- 1 }
@@ -109,7 +110,7 @@ if(progress) pb <- txtProgressBar(min = 0, max = length(required_pages), style =
                             })
         # bug is here
         obs_df <- lapply(obs_df_cleaned, function(x) {
-            data.frame(t(unlist(x)))
+            data.frame(t(unlist(x)), stringsAsFactors = FALSE)
         })
         obs_cleaned_df <- do.call(rbind.fill, obs_df)
 

@@ -640,10 +640,10 @@ A
 1
 262153
 48
-.cache/location_9c3bded5722d3058afd6f48abd9d9d95
+.cache/location_40584eaec3605e9270371021f83f239a
 16
 1
 262153
-77
-\n```r\nlibrary(httr)\nx\040<-\040content(GET(\"http://ipinfo.io/\"),\040as\040=\040\"parsed\")\n```
+0
+
 254

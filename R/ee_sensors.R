@@ -12,8 +12,8 @@
 #' @export
 #' @examples  
 #' # Currently there are only 40 sensors, so request only needs to be pages 1 and 2.
-#' ee_sensors()
-#' all_sensors <- ee_sensors()
+#' # ee_sensors()
+#' # all_sensors <- ee_sensors()
 ee_sensors <- function(page = NULL, 
                         page_size = 1000,
 						remote_id = NULL, 
@@ -61,7 +61,7 @@ sensor_url <- paste0(ee_base_url(), "sensors/?format=geojson")
 #' @export
 #' @examples \dontrun{
 #' full_sensor_list <- ee_sensors()
-#' station <- full_sensor_list$record
+#' station <- full_sensor_list$properties.record
 #' page_1_data <- ee_sensor_data(sensor_id = station[1], page = 1)
 #' page_2_data <- ee_sensor_data(station[1], page = 1:3)
 #'}
@@ -122,6 +122,7 @@ ee_sensor_data <- function(sensor_id = NULL, page = NULL, page_size = 1000, quie
 #' ee_list_sensors()
 #'}
 ee_list_sensors <- function() {
+full_sensor_list <- ee_sensors()
 full_sensor_list[, c("properties.station_name", "properties.units", "properties.variable", "properties.method_name", "record")] 
 }
 

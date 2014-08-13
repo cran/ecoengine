@@ -1,5 +1,12 @@
+ecoengine 1.6
+=================
 
-ecoengine 1.4.2
+* Various bug fixes (https://github.com/ropensci/ecoengine/issues/64)
+* Switched json parser from RJSONIO → jsonlite
+* Updated all sensor functions due to API name changes. record (station record changed from "record" to "properties.record")
+
+
+ecoengine 1.5
 ================
 * Fixed bug with `ee_sources()` (issue #66)
 * Fixed bug in `ee_sensor_agg()`. Measurements are typecast correctly.

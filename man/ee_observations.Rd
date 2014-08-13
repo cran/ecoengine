@@ -77,7 +77,7 @@ ee_observations(page = NULL, page_size = 1000, country = "United States",
 # "phylum", "clss", "order", "family", "genus", "specific_epithet",
 # "infraspecific_epithet", "minimum_depth_in_meters", "maximum_depth_in_meters",
 # "maximum_elevation_in_meters", "minimum_elevation_in_meters", "catalog_number"
-# preparations", "sex", "life_stage", "water_body", "country", "individual_count",
+# "preparations", "sex", "life_stage", "water_body", "country", "individual_count",
 "associated_resources"}
 
 \item{quiet}{Default is \code{FALSE}. Set to \code{TRUE} to supress messages.}
@@ -95,7 +95,7 @@ API endpoint that represents a list of observations.
 \examples{
 # vulpes <- ee_observations(genus = "vulpes")
 \dontrun{
-pinus <- ee_observations(scientific_name = "Pinus", page_size = 100)
+# pinus <- ee_observations(scientific_name = "Pinus", page_size = 100)
 # lynx_data <- ee_observations(genus = "Lynx")
 # Georeferenced data only
 # lynx_data <- ee_observations(genus = "Lynx", georeferenced = TRUE)

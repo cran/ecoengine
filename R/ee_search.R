@@ -9,7 +9,7 @@
 #' @export
 #' @keywords search
 #' @examples \dontrun{
-#' lynx_results <- ee_search(query = "genus:Lynx")
+#' # lynx_results <- ee_search(query = "genus:Lynx")
 #'}
 ee_search <- function(query = NULL, foptions = list()) {
 
@@ -29,7 +29,7 @@ faceted_search_results <- lapply(fields_compacted, function(y) {
         names(temp_fields) <- c("field", "results", "search_url")
         temp_fields
 })
-rbind_all(faceted_search_results)
+do.call(rbind, faceted_search_results)
 }
 
 
@@ -48,10 +48,10 @@ rbind_all(faceted_search_results)
 #' @return data.frame
 #' @importFrom utils txtProgressBar setTxtProgressBar
 #' @examples
-#' general_lynx_query <- ee_search_obs(query  = "Lynx")
+#' # general_lynx_query <- ee_search_obs(query  = "Lynx")
 #'  \dontrun{
-#' lynx_data <- ee_search_obs(query  = "genus:Lynx")
-#' all_lynx_data <- ee_search_obs(query  = "Lynx", page = "all")
+#' # lynx_data <- ee_search_obs(query  = "genus:Lynx")
+#' # all_lynx_data <- ee_search_obs(query  = "Lynx", page = "all")
 #'}
 ee_search_obs <- function(query = NULL, page = NULL, page_size = 1000, quiet = FALSE, progress = TRUE, foptions = list()) {
 	# obs_search_url <- "http://ecoengine.berkeley.edu/api/observations/?format=json"	
