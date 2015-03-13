@@ -1,10 +1,10 @@
 base
-codetools
 devtools
-ecoengine
-ggplot2
-httr
 knitr
+rmarkdown
+ecoengine
 pander
 plyr
-rmarkdown
+dplyr
+ggplot2
+httr
