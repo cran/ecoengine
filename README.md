@@ -1,6 +1,7 @@
 
 Linux: ![travis shield](https://travis-ci.org/ropensci/ecoengine.png?branch=master)   
-Windows: [![Build status](https://ci.appveyor.com/api/projects/status/0unlb6h2lc3t5h60)](https://ci.appveyor.com/project/karthik/ecoengine)
+Windows: [![Build status](https://ci.appveyor.com/api/projects/status/0unlb6h2lc3t5h60)](https://ci.appveyor.com/project/karthik/ecoengine)  
+[![Coverage Status](https://coveralls.io/repos/ropensci/ecoengine/badge.svg)](https://coveralls.io/r/ropensci/ecoengine)
 
 # R interface to the Berkeley Ecoinformatics Engine
 
@@ -30,7 +31,7 @@ Install the package with `devtools` to obtain the latest development version.
 # unlike most packages, devtools requires additional non-R dependencies depending on your OS.
 # See → https://github.com/karthik/dlab-advanced-r/blob/master/installation.md#installation
 library(devtools)
-install_github('ecoengine', 'ropensci', ref = "dev")
+install_github('ropensci/ecoengine')
 ```
 
 ## Documentation
@@ -43,7 +44,7 @@ A quick start guide is available both as [markdown](https://github.com/ropensci/
 To cite package ‘ecoengine’ in publications use:
 
   Karthik Ram (2014). ecoengine: Programmatic interface to the API
-  serving UC Berkeley's Natural History Data. R package version 1.5.
+  serving UC Berkeley's Natural History Data. R package version 1.9.
   https://github.com/ropensci/ecoengine
 
 A BibTeX entry for LaTeX users is

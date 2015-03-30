@@ -639,11 +639,11 @@ A
 1026
 1
 262153
-51
-.cache/photo_count_f753058547be6580d386adab0eaa6f27
+55
+.cache/unnamed-chunk-3_4ca08e7b010a774f92495ee6c456c335
 16
 1
 262153
-251
-\n```r\nphotos\040<-\040ee_photos(quiet\040=\040TRUE,\040progress\040=\040FALSE)\nphotos\n```\n\n```\n#>\040\040[Total\040results\040on\040the\040server]:\04072454\040\n#>\040\040[Args]:\040\n#>\040\040page_size\040=\0401000\040\n#>\040\040georeferenced\040=\0400\040\n#>\040\040page\040=\0401\040\n#>\040\040[Type]:\040photos\040\n#>\040\040[Number\040of\040results\040retrieved]:\0401000\n```
+62
+\n```r\nsource_list\040<-\040ee_sources()\nunique(source_list$name)\n```
 254

@@ -645,5 +645,5 @@ A
 1
 262153
 423
-\n```r\npinus_observations\040<-\040ee_observations(scientific_name\040=\040\"Pinus\",\040page\040=\0401,\040quiet\040=\040TRUE,\040\n\040\040\040\040progress\040=\040FALSE)\npinus_observations\n```\n\n```\n#>\040\040[Total\040results\040on\040the\040server]:\04043363\040\n#>\040\040[Args]:\040\n#>\040\040country\040=\040United\040States\040\n#>\040\040scientific_name\040=\040Pinus\040\n#>\040\040extra\040=\040last_modified\040\n#>\040\040georeferenced\040=\040FALSE\040\n#>\040\040page_size\040=\0401000\040\n#>\040\040page\040=\0401\040\n#>\040\040[Type]:\040FeatureCollection\040\n#>\040\040[Number\040of\040results\040retrieved]:\0401000\n```
+\n```r\npinus_observations\040<-\040ee_observations(scientific_name\040=\040\"Pinus\",\040page\040=\0401,\040quiet\040=\040TRUE,\040\n\040\040\040\040progress\040=\040FALSE)\npinus_observations\n```\n\n```\n#>\040\040[Total\040results\040on\040the\040server]:\04058875\040\n#>\040\040[Args]:\040\n#>\040\040country\040=\040United\040States\040\n#>\040\040scientific_name\040=\040Pinus\040\n#>\040\040extra\040=\040last_modified\040\n#>\040\040georeferenced\040=\040FALSE\040\n#>\040\040page_size\040=\0401000\040\n#>\040\040page\040=\0401\040\n#>\040\040[Type]:\040FeatureCollection\040\n#>\040\040[Number\040of\040results\040retrieved]:\0401000\n```
 254
