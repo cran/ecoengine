@@ -5,7 +5,7 @@
 #' @param  state_province Need to describe these parameters
 #' @param  county California counties. Package include a full list of counties. To load dataset \code{data(california_counties)}
 #' @param  genus genus name
-#' @param  scientific_name scientiifc name
+#' @param  scientific_name scientific name
 #' @param  authors author name
 #' @param  remote_id remote id
 #' @param  collection_code Type of collection. Can be \code{CalAcademy}, \code{Private}, \code{VTM}, \code{CDFA}. \code{CalFlora} Others TBA
@@ -21,7 +21,7 @@
 #' @export
 #' @importFrom httr warn_for_status content GET
 #' @importFrom plyr compact
-#' @importFrom dplyr rbind_all
+#' @importFrom dplyr bind_rows
 #' @importFrom lubridate ymd
 #' @importFrom utils txtProgressBar setTxtProgressBar
 #' @seealso related: \code{\link{ee_photos}} \code{\link{california_counties}}
@@ -124,7 +124,7 @@ ee_photos <- function(page = NULL,
     }
 
   # This binds all paginated results together into a tibble
-  res <- dplyr::rbind_all(results)
+  res <- dplyr::bind_rows(results)
   # removes the "observations" prefix
   names(res) <-  gsub("observations.", "", names(res))
   # Formats date to ymd since there is no recorded time

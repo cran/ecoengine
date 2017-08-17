@@ -1,3 +1,8 @@
+NEXT RELEASE
+===============
+* Added explicit vignette
+* Fixed issues with lubridate and replaced rbind_fill with bind_rows
+
 ecoengine 1.10
 =================
 * Fixed issues in `ee_observations` to allow more granular filtering on collections

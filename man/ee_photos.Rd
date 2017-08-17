@@ -20,7 +20,7 @@ ee_photos(page = NULL, state_province = NULL, county = NULL,
 
 \item{genus}{genus name}
 
-\item{scientific_name}{scientiifc name}
+\item{scientific_name}{scientific name}
 
 \item{authors}{author name}
 
@@ -83,4 +83,3 @@ data(california_counties)
 \seealso{
 related: \code{\link{ee_photos}} \code{\link{california_counties}}
 }
-

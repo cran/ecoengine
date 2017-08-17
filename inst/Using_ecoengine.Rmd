@@ -146,7 +146,7 @@ The database currently holds `r format(photos$results, nsmall = 0)` photos. Phot
 #### Searching photos by author
 
 ```{r, photos_by_author, tidy = TRUE, width.cutoff = 60, background = '#F7F7F7'}
-charles_results <- ee_photos(author = "Charles Webber", quiet = TRUE, progress = FALSE)
+charles_results <- ee_photos(authors = "Charles Webber", quiet = TRUE, progress = FALSE)
 charles_results
 # Let's examine a couple of rows of the data
 charles_results$data[1:2, ]
@@ -217,7 +217,7 @@ lynx_results[, -3]
 
 ```{r, search_print, eval = TRUE, results = "asis", echo = FALSE}
 lynx_results <- ee_search(query = "genus:Lynx")
-pandoc.table(lynx_results[, -3], justify = "left")
+pander::pandoc.table(lynx_results[[1]], justify = "left")
 ```
 
 Similarly it's possible to search through the observations in a detailed manner as well.
@@ -273,5 +273,5 @@ x <- content(GET("http://ipinfo.io/"), as = "parsed")
 ```
 
  Karthik Ram  
- `r library(lubridate); as.character(month(now(), label = TRUE))`, `r library(lubridate); year(now())`   
+ `r library(lubridate); as.character(lubridate::month(lubridate::now(), label = TRUE))`, `r lubridate::year(lubridate::now())`   
  _`r x$city`, `r x$region`_
